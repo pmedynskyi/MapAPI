@@ -93,10 +93,15 @@ def save_image(html_path: str, image_file_path: str) -> None:
     """Opens HTML file locally using headless Selenium and saves the screenshot"""
     options = Options()
     options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    chrome_prefs = dict()
+    options.experimental_options["prefs"] = chrome_prefs
+    chrome_prefs["profile.default_content_settings"] = {"images": 2}
 
     tmpurl = 'file://{path}/{mapfile}'.format(path=os.getcwd(), mapfile=html_path)
 
-    browser = webdriver.Chrome(executable_path='../Scraping/chromedriver', options=options)
+    browser = webdriver.Chrome(executable_path='./chromedriver', options=options)
     browser.get(tmpurl)
     time.sleep(2)
     browser.save_screenshot(image_file_path)
