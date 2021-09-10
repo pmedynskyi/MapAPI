@@ -7,7 +7,7 @@ To install docker, please, follow [installation guide](https://docs.docker.com/e
 Docker image downloads all required Python packages and Chrome and chromdriver for Selenium.
 
 ## Usage
-## Configs
+### Configs
 Please add DB credential to **configs.yaml** prior to running the app.
 
 ### Docker Container
