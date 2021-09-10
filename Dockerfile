@@ -42,4 +42,8 @@ RUN pip3 install -r requirements.txt
 
 COPY app.py .
 
+COPY utils.py .
+
+COPY configs.yaml .
+
 CMD [ "python3", "app.py"]

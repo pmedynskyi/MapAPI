@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def test(inp):
-    # server = 'http://52.30.27.231:12000'
+    # server = 'http://34.240.222.177:12000'
     server = 'http://0.0.0.0:12000'
     response = requests.post(server + f'/get_map_image?kgs22={inp}')
     print(response.ok)
