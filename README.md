@@ -6,7 +6,11 @@ To install docker, please, follow [installation guide](https://docs.docker.com/e
 
 Docker image downloads all required Python packages and Chrome and chromdriver for Selenium.
 
-## Docker Container
+## Usage
+## Configs
+Please add DB credential to **configs.yaml** prior to running the app.
+
+### Docker Container
 To create docker image, run the command:
 
 ```bash
@@ -19,7 +23,7 @@ To run docker container, execute the command:
 docker run -p 12000:12000 python-docker
 ```
 
-## Usage
+### Request
 
 To get the image for particular kgs22 number, POST request should be send to following endpoint: 
 
