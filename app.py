@@ -17,7 +17,6 @@ def get_map_image():
     kgs_number = int(kgs_number)
 
     credentials = read_yaml('configs.yaml')
-    print(credentials)
     data = get_data(kgs_number, credentials['DATABASE'])
 
     coordinates_dict = ast.literal_eval(data['rectangle'].values[0])
