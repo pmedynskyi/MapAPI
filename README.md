@@ -41,11 +41,11 @@ Where:
 
 The returned object is JSON in following format:
 
-```json
+`
 {
 'image':  base64_encoded_image
 }
-```
+`
 
 Where: 
 
