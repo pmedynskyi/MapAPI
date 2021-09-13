@@ -46,4 +46,8 @@ COPY utils.py .
 
 COPY configs.yaml .
 
+COPY cert.pem .
+
+COPY key.pem .
+
 CMD [ "python3", "app.py"]
