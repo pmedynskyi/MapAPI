@@ -41,8 +41,11 @@ def get_map_image():
     image = process_image(image_file_name)
 
     # Encode image to base64
-    _, buffer = cv2.imencode('.jpg', np.array(image))
-    jpg_as_text = base64.b64encode(buffer)
+    # _, buffer = cv2.imencode('.jpg', np.array(image))
+    # jpg_as_text = base64.b64encode(buffer)
+    image.save(image_file_name)
+    with open(image_file_name, "rb") as image_file:
+        jpg_as_text = base64.b64encode(image_file.read())
 
     response = jsonify(image=jpg_as_text.decode("utf-8"))
     return response
