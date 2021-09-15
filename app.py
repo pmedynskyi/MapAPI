@@ -41,7 +41,9 @@ def get_map_image():
     _, buffer = cv2.imencode('.jpg', image_array)
     jpg_as_text = base64.b64encode(buffer)
 
-    return jsonify(image=jpg_as_text.decode("utf-8"))
+    response = jsonify(image=jpg_as_text.decode("utf-8"))
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 if __name__ == "__main__":
