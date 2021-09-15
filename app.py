@@ -4,10 +4,12 @@ import statistics
 
 import cv2
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/get_map_image/", methods=['POST'])
@@ -42,7 +44,6 @@ def get_map_image():
     jpg_as_text = base64.b64encode(buffer)
 
     response = jsonify(image=jpg_as_text.decode("utf-8"))
-    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 
