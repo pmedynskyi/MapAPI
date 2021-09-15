@@ -3,6 +3,7 @@ import base64
 import statistics
 
 import cv2
+import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -37,15 +38,11 @@ def get_map_image():
     save_map_html(avg_lat, avg_lon, zoom, coordinates, html_file_name)
     save_image(html_file_name, image_file_name)
 
-    image, image_array = process_image(image_file_name)
+    image = process_image(image_file_name)
 
     # Encode image to base64
-    # _, buffer = cv2.imencode('.jpg', image_array)
-    # jpg_as_text = base64.b64encode(buffer)
-
-    image.save(image_file_name)
-    with open(image_file_name, "rb") as image_file:
-        jpg_as_text = base64.b64encode(image_file.read())
+    _, buffer = cv2.imencode('.jpg', np.array(image))
+    jpg_as_text = base64.b64encode(buffer)
 
     response = jsonify(image=jpg_as_text.decode("utf-8"))
     return response

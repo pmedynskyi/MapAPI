@@ -1,6 +1,7 @@
 import os
 import time
 
+import cv2
 import yaml
 import folium
 import pymysql
@@ -120,4 +121,6 @@ def process_image(image_file_path: str) -> Image:
     data[..., :-1][purple_areas.T] = (64, 64, 64)
     data[..., :-1][light_purple_areas.T] = (64, 64, 64)
     im2 = Image.fromarray(data)
-    return im2, data
+    im2 = cv2.cvtColor(np.array(im2), cv2.COLOR_BGR2RGB)
+
+    return im2
