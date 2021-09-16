@@ -1,17 +1,16 @@
 import base64
 
 import io
-import cv2
 import requests
-import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 
 
 def test(inp):
-    server = 'http://localhost:12000'
+    server = 'https://localhost:12000'
     # server = 'http://34.240.222.177:12000'
-    response = requests.post(server + f'/get_map_image?kgs22={inp}')
+    response = requests.post(server + f'/get_map_image?kgs22={inp}',
+                             verify='cert.pem')
     print(response.ok)
 
     response = response.json()
@@ -28,10 +27,10 @@ def test(inp):
     # image_orig = cv2.cvtColor(np.array(image_orig), cv2.COLOR_BGR2RGB)
 
     plt.imshow(image_orig)
-    plt.imsave('output_new.jpg', image_orig)
+    # plt.imsave('output_new.jpg', image_orig)
     plt.show()
 
 
 if __name__ == "__main__":
-    inp = '2000000001474'
+    inp = '2000000001524'
     test(inp)
