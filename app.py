@@ -9,6 +9,16 @@ from flask_cors import CORS
 
 from utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
 
+
+class ReverseProxied(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, environ, start_response):
+        environ['wsgi.url_scheme'] = 'https'
+        return self.app(environ, start_response)
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -49,4 +59,4 @@ def get_map_image():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=12000, ssl_context=('cert.pem', 'key.pem'))
+    app.run(host='0.0.0.0', port=80)
