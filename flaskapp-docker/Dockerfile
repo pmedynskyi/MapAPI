@@ -42,8 +42,8 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /app
 # Set display port as an environment variable
 ENV DISPLAY=:99
 
-RUN apt-get update
+# RUN apt-get update
 
-RUN apt-get install gunicorn3 -y
+# RUN apt-get install gunicorn3 -y
 
-CMD [ "gunicorn", "-b", "0.0.0.0:8000", "app:app", "--workers=3"]
+CMD [ "gunicorn", "-b", "0.0.0.0:8000", "wsgi:app"] # , "--workers=3"
