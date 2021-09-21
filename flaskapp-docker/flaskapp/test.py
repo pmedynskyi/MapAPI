@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 
 
 def test(inp):
-    # server = 'http://localhost:5000'
-    # response = requests.post(server + f'/get_map_image?kgs22={inp}'
-    #                          # , verify='cert.pem'
-    #                          )
+    server = 'http://localhost:8000'
+    response = requests.post(server + f'/get_map_image?kgs22={inp}'
+                             # , verify='cert.pem'
+                             )
 
-    server = 'https://34.240.222.177:12000'
-    response = requests.post(server + f'/get_map_image?kgs22={inp}',
-                             verify='cert_server.pem')
+    # server = 'https://34.240.222.177:12000'
+    # response = requests.post(server + f'/get_map_image?kgs22={inp}',
+    #                          verify='cert_server.pem')
     print(response.ok)
 
     response = response.json()

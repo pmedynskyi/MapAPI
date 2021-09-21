@@ -33,6 +33,7 @@ flaskapp-docker/flaskapp/chromedriver
 *.png
 *.pem
 *.ipynb
+*.txt
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

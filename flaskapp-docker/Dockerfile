@@ -46,4 +46,4 @@ RUN apt-get update
 
 RUN apt-get install gunicorn3 -y
 
-CMD [ "gunicorn3", "-b", "0.0.0.0:8000", "app:app", "--workers=3"]
+CMD [ "gunicorn", "-b", "0.0.0.0:8000", "app:app", "--workers=3"]

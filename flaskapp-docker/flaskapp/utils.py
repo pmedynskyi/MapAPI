@@ -103,7 +103,7 @@ def save_image(html_path: str, image_file_path: str) -> None:
 
     tmpurl = 'file://{path}/{mapfile}'.format(path=os.getcwd(), mapfile=html_path)
 
-    browser = webdriver.Chrome(executable_path='chromedriver', options=options)
+    browser = webdriver.Chrome(executable_path='./chromedriver', options=options)
     browser.get(tmpurl)
     time.sleep(2)
     browser.save_screenshot(image_file_path)
