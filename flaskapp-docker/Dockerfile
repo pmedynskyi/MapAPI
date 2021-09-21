@@ -40,14 +40,14 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-COPY app.py .
+COPY flaskapp/app.py .
 
-COPY utils.py .
+COPY flaskapp/utils.py .
 
-COPY configs.yaml .
+COPY flaskapp/configs.yaml .
 
-COPY cert.pem .
+# COPY flaskapp/cert.pem .
 
-COPY key.pem .
+# COPY flaskapp/key.pem .
 
 CMD [ "python3", "app.py"]
