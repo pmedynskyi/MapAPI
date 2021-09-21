@@ -46,4 +46,5 @@ ENV DISPLAY=:99
 
 # RUN apt-get install gunicorn3 -y
 
-CMD [ "gunicorn", "-b", "0.0.0.0:8000", "wsgi:app"] # , "--workers=3"
+# CMD [ "gunicorn", "-b", "0.0.0.0:8000", "wsgi:app"] # , "--workers=3"
+CMD [ "python", "app.py"]
