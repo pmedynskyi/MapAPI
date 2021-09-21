@@ -7,7 +7,7 @@ import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from app.utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
+from utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
 
 
 class ReverseProxied(object):
