@@ -4,7 +4,7 @@ services:
   flaskapp:
     build: ./flaskapp-docker
     ports:
-      - "8000:8000"
+      - "12000:12000"
 #    environment:
 #      - SERVER_NAME=0.0.0.0
 #    network_mode: host
