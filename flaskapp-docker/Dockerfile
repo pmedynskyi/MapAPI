@@ -31,7 +31,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Copy app files
-COPY app /app/
+COPY flaskapp /app/
 
 # Set working directory
 WORKDIR /app
