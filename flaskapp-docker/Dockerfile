@@ -22,6 +22,17 @@ RUN apt-get install -yqq unzip
 # Download the Chrome Driver
 RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
 
+# Dependencies for cv2 package
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+
+# Install required packages
+COPY requirements.txt requirements.txt
+
+RUN pip3 install -r requirements.txt
+
+# Copy app files
+COPY app /app/
+
 # Set working directory
 WORKDIR /app
 
@@ -33,21 +44,6 @@ ENV DISPLAY=:99
 
 RUN apt-get update
 
-# Dependencies for cv2 package
-RUN apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get install gunicorn3 -y
 
-COPY requirements.txt requirements.txt
-
-RUN pip3 install -r requirements.txt
-
-COPY app.py .
-
-COPY utils.py .
-
-COPY configs.yaml .
-
-COPY cert.pem .
-
-COPY key.pem .
-
-CMD [ "python3", "app.py"]
+CMD [ "gunicorn3", "-b", "0.0.0.0:8000", "app:app", "--workers=3"]

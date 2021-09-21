@@ -7,7 +7,7 @@ import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
+from app.utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
 
 
 class ReverseProxied(object):
@@ -59,4 +59,4 @@ def get_map_image():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run()  # host='0.0.0.0', port=80

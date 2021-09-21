@@ -26,7 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-chromedriver
+flaskapp-docker/flaskapp/chromedriver
 *.html
 .idea
 *.jpg

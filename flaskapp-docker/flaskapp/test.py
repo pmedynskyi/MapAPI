@@ -7,16 +7,20 @@ import matplotlib.pyplot as plt
 
 
 def test(inp):
-    server = 'https://localhost:12000'
-    # server = 'http://34.240.222.177:12000'
+    # server = 'http://localhost:5000'
+    # response = requests.post(server + f'/get_map_image?kgs22={inp}'
+    #                          # , verify='cert.pem'
+    #                          )
+
+    server = 'https://34.240.222.177:12000'
     response = requests.post(server + f'/get_map_image?kgs22={inp}',
-                             verify='cert.pem')
+                             verify='cert_server.pem')
     print(response.ok)
 
     response = response.json()
 
     image_base64 = response['image']
-    with open('base64.txt', 'w') as f:
+    with open('../../base64.txt', 'w') as f:
         f.write(image_base64)
     # print(image_base64)
     jpg_original = base64.b64decode(image_base64)
