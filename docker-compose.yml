@@ -6,7 +6,7 @@ services:
     container_name: flaskapp
     ports:
       - "12000:12000"
-#    network_mode: host
+    network_mode: host
 
   nginx:
     build: ./nginx
@@ -14,3 +14,4 @@ services:
     environment:
       - SERVER_NAME=0.0.0.0
     restart: always
+    network_mode: host
