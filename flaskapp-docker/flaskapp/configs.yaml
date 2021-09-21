@@ -1,6 +1,6 @@
 DATABASE:
-  USERNAME: dbadmin
-  PASSWORD: 6EH584R6R4ZNHT6
-  HOST: development-db-cluster.cs4heffb1ufh.eu-west-1.rds.amazonaws.com
-  PORT: 3306
-  DB: fcrimmo_db
+  USERNAME:
+  PASSWORD:
+  HOST:
+  PORT:
+  DB:
