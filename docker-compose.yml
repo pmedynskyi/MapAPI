@@ -12,7 +12,7 @@ services:
     build: ./nginx
     container_name: nginx
     ports:
-      - "13000:13000"
+      - "12001:12001"
     environment:
       - SERVER_NAME=34.240.222.177
     depends_on:
