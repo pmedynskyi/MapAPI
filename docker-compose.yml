@@ -3,8 +3,14 @@ version: '3'
 services:
   flaskapp:
     build: ./flaskapp-docker
+    container_name: flaskapp
     ports:
       - "12000:12000"
-#    environment:
-#      - SERVER_NAME=0.0.0.0
 #    network_mode: host
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    environment:
+      - SERVER_NAME=0.0.0.0
+    restart: always
