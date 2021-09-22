@@ -23,21 +23,21 @@ app = Flask(__name__)
 CORS(app)
 
 
-def run_request():
-    index = int(request.json['index'])
-    list = ['red', 'green', 'blue', 'yellow', 'black']
-    return list[index]
+# def run_request():
+#     index = int(request.json['index'])
+#     list = ['red', 'green', 'blue', 'yellow', 'black']
+#     return list[index]
+#
+#
+# @app.route('/', methods=['GET', 'POST'])
+# def hello_world():
+#     if request.method == 'GET':
+#         return 'The model is up and running. Send a POST request'
+#     else:
+#         return run_request()
 
 
-@app.route('/', methods=['GET', 'POST'])
-def hello_world():
-    if request.method == 'GET':
-        return 'The model is up and running. Send a POST request'
-    else:
-        return run_request()
-
-
-@app.route("/get_map_image/", methods=['POST'])
+@app.route("/", methods=['POST'])
 def get_map_image():
     """Full pipeline to get map image given kgs22"""
     kgs_number = request.json['kgs22']
