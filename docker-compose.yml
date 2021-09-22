@@ -6,6 +6,10 @@ services:
     container_name: flaskapp
     ports:
       - "12000:12000"
+    expose:
+      - "12000"
+    networks:
+      - apinetwork
 #    network_mode: host
     command: gunicorn -w 1 -b 0.0.0.0:12000 wsgi:app
 
@@ -14,9 +18,16 @@ services:
     container_name: nginx
     ports:
       - "12001:12001"
+    expose:
+      - "12001"
+    networks:
+      - apinetwork
     environment:
       - SERVER_NAME=34.240.222.177
     depends_on:
       - flaskapp
     restart: always
 #    network_mode: host
+
+networks:
+  apinetwork:
