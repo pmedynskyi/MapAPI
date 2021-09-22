@@ -23,6 +23,11 @@ app = Flask(__name__)
 CORS(app)
 
 
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
+
+
 @app.route("/get_map_image/", methods=['POST'])
 def get_map_image():
     """Full pipeline to get map image given kgs22"""
