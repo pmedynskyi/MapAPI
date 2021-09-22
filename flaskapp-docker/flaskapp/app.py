@@ -37,7 +37,7 @@ CORS(app)
 #         return run_request()
 
 
-@app.route("/", methods=['POST'])
+@app.route("/get_map_image/", methods=['POST'])
 def get_map_image():
     """Full pipeline to get map image given kgs22"""
     kgs_number = request.json['kgs22']
