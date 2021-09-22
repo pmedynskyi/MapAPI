@@ -23,9 +23,18 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/")
-def hello():
-    return "<h1 style='color:blue'>Hello There!</h1>"
+def run_request():
+    index = int(request.json['index'])
+    list = ['red', 'green', 'blue', 'yellow', 'black']
+    return list[index]
+
+
+@app.route('/', methods=['GET', 'POST'])
+def hello_world():
+    if request.method == 'GET':
+        return 'The model is up and running. Send a POST request'
+    else:
+        return run_request()
 
 
 @app.route("/get_map_image/", methods=['POST'])
