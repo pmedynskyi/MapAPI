@@ -9,6 +9,16 @@ from flask_cors import CORS
 
 from utils import read_yaml, get_data, get_zoom, save_map_html, save_image, process_image
 
+
+class ReverseProxied(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, environ, start_response):
+        environ['wsgi.url_scheme'] = 'https'
+        return self.app(environ, start_response)
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -27,7 +37,7 @@ CORS(app)
 #         return run_request()
 
 
-@app.route("/", methods=['POST'])
+@app.route("/get_map_image/", methods=['POST'])
 def get_map_image():
     """Full pipeline to get map image given kgs22"""
     kgs_number = request.json['kgs22']
