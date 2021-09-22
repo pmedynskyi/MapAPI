@@ -40,7 +40,8 @@ def hello_world():
 @app.route("/get_map_image/", methods=['POST'])
 def get_map_image():
     """Full pipeline to get map image given kgs22"""
-    kgs_number = request.args.get('kgs22', '')
+    kgs_number = request.json['kgs22']
+    # kgs_number = request.args.get('kgs22', '')
     kgs_number = int(kgs_number)
 
     credentials = read_yaml('configs.yaml')
