@@ -7,18 +7,27 @@ import matplotlib.pyplot as plt
 
 
 def test(inp):
-    server = 'http://localhost:8000'
+    server = 'http://localhost:12000'
     response = requests.post(server + f'/get_map_image?kgs22={inp}'
                              # , verify='cert.pem'
                              )
-
-    # server = 'https://34.240.222.177:12000'
-    # response = requests.post(server + f'/get_map_image?kgs22={inp}',
-    #                          verify='cert_server.pem')
+    #
+    # server = 'http://34.240.222.177:12000'
+    # response = requests.post(server + f'/get_map_image?kgs22={inp}'
+    #                          # , json={'kgs22': inp}
+    #                          # , verify='cert_server.pem'
+    #                          # , verify=False
+    #                          )
+    # response = requests.post(server,
+    #                          json={'index': 1}
+    #                          # , verify='cert_server.pem'
+    #                          # , verify=False
+    #                          )
     print(response.ok)
 
     response = response.json()
-
+    # print(response.text)
+    # return response
     image_base64 = response['image']
     with open('../../base64.txt', 'w') as f:
         f.write(image_base64)
@@ -36,5 +45,5 @@ def test(inp):
 
 
 if __name__ == "__main__":
-    inp = '2000000001524'
+    inp = '5111000100324' # '2000000001524'
     test(inp)

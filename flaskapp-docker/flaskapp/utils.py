@@ -118,9 +118,36 @@ def process_image(image_file_path: str) -> Image:
     red, green, blue, alpha = data.T
     purple_areas = (red == 70) & (blue == 68) & (green == 49)
     light_purple_areas = (red == 100) & (blue == 100) & (green == 84)
+    red_areas = (red == 181) & (blue == 53) & (green == 37)
+    red_areas2 = (red == 181) & (blue == 54) & (green == 37)
+    red_areas3 = (red == 179) & (blue == 53) & (green == 36)
+    red_areas4 = (red == 181) & (blue == 53) & (green == 36)
+    red_areas5 = (red == 162) & (blue == 72) & (green == 61)
+    red_areas6 = (red == 181) & (blue == 55) & (green == 38)
+    red_areas7 = (red == 128) & (blue == 75) & (green == 62)
+    red_areas8 = (red == 163) & (blue == 61) & (green == 46)
+    red_areas9 = (red == 171) & (blue == 59) & (green == 44)
+    red_areas10 = (red == 133) & (blue == 71) & (green == 56)
+    red_areas11 = (red == 180) & (blue == 58) & (green == 41)
+
     data[..., :-1][purple_areas.T] = (64, 64, 64)
     data[..., :-1][light_purple_areas.T] = (64, 64, 64)
+    data[..., :-1][red_areas.T] = (18, 8, 13)
+    data[..., :-1][red_areas2.T] = (18, 8, 13)
+    data[..., :-1][red_areas3.T] = (18, 8, 13)
+    data[..., :-1][red_areas4.T] = (18, 8, 13)
+    data[..., :-1][red_areas5.T] = (18, 8, 13)
+    data[..., :-1][red_areas6.T] = (18, 8, 13)
+    data[..., :-1][red_areas7.T] = (18, 8, 13)
+    data[..., :-1][red_areas8.T] = (18, 8, 13)
+    data[..., :-1][red_areas9.T] = (18, 8, 13)
+    data[..., :-1][red_areas10.T] = (18, 8, 13)
+    data[..., :-1][red_areas11.T] = (18, 8, 13)
+
     data = cv2.cvtColor(data, cv2.COLOR_BGR2RGB)
     im2 = Image.fromarray(data)
 
-    return im2
+    img_width, img_height = im2.size
+    (left, upper, right, lower) = (38, 1, img_width, img_height)
+    im_crop = im2.crop((left, upper, right, lower))
+    return im_crop
